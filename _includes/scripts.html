@@ -95,11 +95,27 @@
                 
                 // --- EASTER EGG: PASSWORD CRACKER INTERCEPT ---
                 if (typeof isCracking !== 'undefined' && isCracking) {
+                    
+                    // NEW: Allow user to exit the cracking mini-game
+                    if (cmd === 'exit' || cmd === 'cancel' || cmd === 'abort' || cmd === 'clear') {
+                        isCracking = false;
+                        termOutput.innerHTML += `<div><span class="text-cyan-500">guest@${termData.domain || 'localhost'}:~$</span> <span class="text-white">${cmd}</span></div>`;
+                        
+                        if (cmd === 'clear') {
+                            termOutput.innerHTML = '';
+                        } else {
+                            termOutput.innerHTML += `<div class="text-yellow-500 ml-2">[!] Cracking sequence aborted. Returning to standard shell.</div>`;
+                        }
+                        termOutput.scrollTop = termOutput.scrollHeight;
+                        return; // Stop normal execution
+                    }
+
                     const guess = cmd.toUpperCase();
                     termOutput.innerHTML += `<div><span class="text-cyan-500">guest@${termData.domain || 'localhost'}:~$</span> <span class="text-white">${guess}</span></div>`;
                     
                     if (guess.length !== 5) {
-                        termOutput.innerHTML += `<div class="text-red-500 ml-2">Invalid length. Enter 5 characters.</div>`;
+                        // NEW: Added the hint on how to exit
+                        termOutput.innerHTML += `<div class="text-red-500 ml-2">Invalid length. Enter exactly 5 characters (or type 'exit' to abort).</div>`;
                         termOutput.scrollTop = termOutput.scrollHeight;
                         return;
                     }
@@ -207,7 +223,7 @@
                     case 'crack':
                         if (typeof passwords !== 'undefined') {
                             isCracking = true;
-                            attemptsLeft = 5;
+                            attemptsLeft = 4;
                             targetPassword = passwords[Math.floor(Math.random() * passwords.length)];
                             response = `
                                 <div class="text-cyan-300">
@@ -219,7 +235,7 @@
                                     0x1F5B: ${passwords[2]}<br>
                                     0x1F6C: ${passwords[3]}<br>
                                     0x1F7D: ${passwords[4]}<br><br>
-                                    Access Granted: ${passwords[5]}<br><br>
+                                    Access Granted: Password: AWSEdrfTFytFSUAGV!<br><br>
                                 </div>`;
                         } else {
                             response = `<span class="text-red-500">Error: Cracking module not loaded.</span>`;
