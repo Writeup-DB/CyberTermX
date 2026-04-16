@@ -12,4 +12,4 @@
 
 - name: "WriteupDB"
   url: "https://www.writeup-db.com/"
-  desc: "At Writeup-DB, we are dedicated to enhancing the learning experience by providing a comprehensive collection of external writeups. Our platform is your one-stop destination for Bug Bounty Writeups, CVE Writeups, Certification Journey Writeups, and technical Cheatsheets."
+  desc: "At Writeup-DB, we are dedicated to enhancing the learning experience by providing a comprehensive collection of external writeups."

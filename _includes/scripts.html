@@ -31,7 +31,6 @@
     }
     setInterval(drawMatrix, 35);
 
-
     // ==========================================
     // 2. WORDPRESS RSS FEED (LATEST INTEL)
     // ==========================================
@@ -47,13 +46,19 @@
             if (data.status === 'ok' && data.items.length > 0) {
                 container.innerHTML = '';
                 data.items.slice(0, 5).forEach(item => {
-                    // Extract just the date part (YYYY-MM-DD), Title and Description
                     const date = item.pubDate.split(' ')[0];
+                    
+                    // Sanitize description: Strip HTML tags and limit to 120 characters
+                    let cleanDesc = item.description.replace(/(<([^>]+)>)/gi, ""); 
+                    if (cleanDesc.length > 120) {
+                        cleanDesc = cleanDesc.substring(0, 120) + "...";
+                    }
+
                     container.innerHTML += `
                         <a href="${item.link}" target="_blank" class="block border-l-2 border-purple-900 bg-purple-950/10 pl-4 py-3 hover:bg-purple-900/20 transition group">
                             <span class="text-[10px] text-purple-400 font-mono block mb-1 uppercase">PACKET_DATE: ${date}</span>
                             <span class="text-sm text-white font-bold group-hover:text-purple-300 transition">${item.title}</span>
-                            <p class="text-[10px] opacity-70 mt-1">${ item.description }</p>
+                            <p class="text-[10px] opacity-70 mt-1">${cleanDesc}</p>
                         </a>`;
                 });
             } else {
@@ -126,9 +131,8 @@
                         break;
                     case 'download':
                     case 'download resume.pdf':
-                        response = '[+] Initializing secure file transfer...<br>[+] Downloading Resume...';
-                        // Ensure you place a resume.pdf in the root directory of your repo
-                        window.open('{{ site.url }}/resume.pdf', '_blank');
+                        response = '[+] Initializing secure file transfer...<br>[+] Downloading Minimum Info Resume...';
+                        window.open('{{ site.drive_link_resume }}', '_blank');
                         break;
                     case 'neofetch':
                         response = `
