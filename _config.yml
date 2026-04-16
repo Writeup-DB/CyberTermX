@@ -1,6 +1,6 @@
 title: TOUHID SHAIKH | SECURITY RESEARCHER
 email: touhidshaikh22@gmail.com
-description: Cybersecurity Researcher & Exploit Developer
+description: A cybersecurity professional with 6+ years of experience. Expert in identifying critical vulnerabilities (RCE, Auth Bypass) in hardware and enterprise software. Active contributor to <span>Metasploit</span> and <span>Exploit-DB</span>, with 10+ published exploits. Primary author of the official CIS pfSense Benchmark. Creator of <span>ShellPop</span> and <span>403Override-NG</span>.
 url: "https://touhidshaikh.com"
 baseurl: ""
 
@@ -15,9 +15,6 @@ author:
     [INSERT_YOUR_PGP_KEY_HERE]
     -----END PGP PUBLIC KEY BLOCK-----
 
-# Certifications
-certifications: ["OSCP", "OSCE", "CRT", "CPSA"]
-
 # Specializations
 skills: ["VAPT", "Network_Security", "WEB_EXPLOIT", "PYTHON_AUTOMATION"]
 
@@ -28,5 +25,24 @@ social:
   twitter: "touhidshaikh22"
   hackthebox: "10931"
 
+# Certifications
+certifications: 
+  - name: "OSCP"
+    url: "https://www.credential.net/your-oscp-link"
+  - name: "OSCE"
+    url: "https://www.credential.net/your-osce-link"
+  - name: "CRT"
+    url: "https://www.crest-approved.org/your-crt-link"
+  - name: "CPSA"
+    url: "https://www.crest-approved.org/your-cpsa-link"
+
 # Hall of Fame
-hall_of_fame: ["APPLE", "NETGEAR", "SYNOLOGY", "ONEPLUS"]
+hall_of_fame: 
+  - name: "APPLE"
+    url: "https://support.apple.com/en-us/HT201536"
+  - name: "NETGEAR"
+    url: "https://bugcrowd.com/netgear/hall-of-fame"
+  - name: "SYNOLOGY"
+    url: "https://www.synology.com/en-global/security/hall_of_fame"
+  - name: "ONEPLUS"
+    url: "https://security.oneplus.com/hall-of-fame.html"

@@ -13,7 +13,8 @@
     <h3 class="border-b border-green-900 mb-3 pb-1 text-green-100 uppercase text-sm"># Identity</h3>
     <ul class="text-sm space-y-2">
         <li><span class="opacity-50">LOCATION:</span> {{ site.author.location }}</li>
-        <li><span class="opacity-50">GITHUB:</span> <a href="https://github.com/{{ site.social.github }}" class="underline">{{ site.social.github }}</a></li>
+        <li><span class="opacity-50">ROLE:</span> {{ site.author.role | split: " // " | first }}</li>
+        <li><span class="opacity-50">LINK:</span> <a href="{{ site.url }}" class="underline">{{ site.url | remove: "https://" | remove: "http://" }}</a></li>
     </ul>
 </section>
 
@@ -23,5 +24,63 @@
         {% for skill in site.skills %}
         <span class="text-[10px] border border-green-700 p-1">{{ skill }}</span>
         {% endfor %}
+    </div>
+</section>
+
+<section class="terminal-window p-5">
+    <h3 class="text-xs font-bold text-white mb-3 bg-green-900/50 px-2 py-1 inline-block">HONORS_&_AWARDS</h3>
+    <ul class="text-[11px] space-y-4">
+        {% for honor in site.data.honors %}
+        <li class="border-l-2 border-{{ honor.color }}-600 pl-3">
+            <span class="text-{{ honor.color }}-500 font-bold block">{{ honor.title }}</span>
+            {{ honor.desc }}
+        </li>
+        {% endfor %}
+
+        <li class="border-l-2 border-green-600 pl-3">
+            <span class="text-green-400 font-bold block mb-2">Bug Bounty Hall of Fame</span>
+            <div class="grid grid-cols-2 gap-1 text-[9px] text-center">
+                
+                {% for company in site.hall_of_fame %}
+                <span class="border border-green-900 p-1 hover:bg-green-900/50 transition">
+                    <a href="{{ company.url }}" target="_blank" class="hover:text-green-400 block w-full h-full">{{ company.name }}</a>
+                </span>
+                {% endfor %}
+                
+                {% if site.social.bugcrowd %}
+                <span class="border border-green-900 p-1 hover:bg-green-900/50 transition">
+                    <a href="https://bugcrowd.com/{{ site.social.bugcrowd }}" target="_blank" class="hover:text-green-400 block w-full h-full">View Full Profile</a>
+                </span>
+                {% endif %}
+            </div>
+        </li>
+    </ul>
+</section>
+
+<section class="terminal-window p-5">
+    <h3 class="text-xs font-bold text-white mb-3 bg-green-900/50 px-2 py-1 inline-block">CONNECT_UPLINK</h3>
+    <div class="grid grid-cols-1 gap-2 text-xs">
+        {% if site.social.github %}
+        <a href="https://github.com/{{ site.social.github }}" target="_blank" class="hover:bg-green-500 hover:text-black p-1 transition">>> GITHUB</a>
+        {% endif %}
+        {% if site.social.hackthebox %}
+        <a href="https://app.hackthebox.com/public/users/{{ site.social.hackthebox }}" target="_blank" class="hover:bg-green-500 hover:text-black p-1 transition">>> HackTheBox</a>
+        {% endif %}
+        {% if site.social.linkedin %}
+        <a href="https://linkedin.com/in/{{ site.social.linkedin }}" target="_blank" class="hover:bg-green-500 hover:text-black p-1 transition">>> LINKEDIN</a>
+        {% endif %}
+        {% if site.social.twitter %}
+        <a href="https://twitter.com/{{ site.social.twitter }}" target="_blank" class="hover:bg-green-500 hover:text-black p-1 transition">>> X_TWITTER</a>
+        {% endif %}
+        {% if site.email %}
+        <a href="mailto:{{ site.email }}" class="hover:bg-green-500 hover:text-black p-1 transition">>> EMAIL</a>
+        {% endif %}
+    </div>
+</section>
+
+<section class="terminal-window p-4 overflow-hidden">
+    <h3 class="text-xs font-bold text-white mb-3 bg-blue-900/40 px-2 py-1 inline-block">📡 COMMS_STREAM (@{{ site.social.twitter }})</h3>
+    <div class="twitter-wrapper h-[350px] overflow-y-auto">
+        <a class="twitter-timeline" data-theme="dark" data-chrome="noheader nofooter transparent" href="https://twitter.com/{{ site.social.twitter }}" target="_blank">Awaiting Handshake...</a> 
     </div>
 </section>

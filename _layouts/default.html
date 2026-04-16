@@ -16,11 +16,17 @@
                     <h1 class="text-4xl md:text-5xl font-bold tracking-tighter uppercase">{{ site.author.name }} <span class="animate-pulse">_</span></h1>
                     <p class="text-lg md:text-xl text-green-400 mt-2">//{{ site.author.role }}</p>
                 </div>
+
                 <div class="text-left md:text-right text-[10px] opacity-60 font-mono">
                     <p>IP: {{ site.author.ip_address }}</p>
                     <p>STATUS: EXFILTRATING_DATA...</p>
-                    <p>CERTS: {{ site.certifications | join: ' | ' }}</p>
+                    <p>CERTS: 
+                        {% for cert in site.certifications %}
+                            <a href="{{ cert.url }}" target="_blank" class="hover:text-green-300 hover:underline transition">{{ cert.name }}</a>{% if forloop.last == false %} | {% endif %}
+                        {% endfor %}
+                    </p>
                 </div>
+
             </div>
         </header>
 
