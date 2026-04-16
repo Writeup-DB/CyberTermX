@@ -174,9 +174,10 @@ print("[+] Payload delivered. Exploiting memory...")
 
     // ==========================================
     // 5. EASTER EGG: TERMINAL PASSWORD CRACKER 
+    // Attached to window to prevent Jekyll scope issues
     // ==========================================
-    let isCracking = false;
-    let attemptsLeft = 5;
-    const passwords = ["ADMIN", "T0KEN", "SH3LL", "LINuX", "BYPAS1234!"];
-    let targetPassword = "";
+    window.isCracking = false;
+    window.crackAttemptsLeft = 4;
+    window.crackPasswords = ["ADMIN", "TOKEN", "SHELL", "LINUX", "TMS22"];
+    window.crackTarget = "";
 </script>

@@ -94,27 +94,21 @@
                 if (cmd !== '') cmdHistory.push(cmd);
                 
                 // --- EASTER EGG: PASSWORD CRACKER INTERCEPT ---
-                if (typeof isCracking !== 'undefined' && isCracking) {
+                if (window.isCracking) {
                     
-                    // NEW: Allow user to exit the cracking mini-game
                     if (cmd === 'exit' || cmd === 'cancel' || cmd === 'abort' || cmd === 'clear') {
-                        isCracking = false;
+                        window.isCracking = false;
                         termOutput.innerHTML += `<div><span class="text-cyan-500">guest@${termData.domain || 'localhost'}:~$</span> <span class="text-white">${cmd}</span></div>`;
-                        
-                        if (cmd === 'clear') {
-                            termOutput.innerHTML = '';
-                        } else {
-                            termOutput.innerHTML += `<div class="text-yellow-500 ml-2">[!] Cracking sequence aborted. Returning to standard shell.</div>`;
-                        }
+                        if (cmd === 'clear') termOutput.innerHTML = '';
+                        else termOutput.innerHTML += `<div class="text-yellow-500 ml-2">[!] Cracking sequence aborted. Returning to standard shell.</div>`;
                         termOutput.scrollTop = termOutput.scrollHeight;
-                        return; // Stop normal execution
+                        return; 
                     }
 
                     const guess = cmd.toUpperCase();
                     termOutput.innerHTML += `<div><span class="text-cyan-500">guest@${termData.domain || 'localhost'}:~$</span> <span class="text-white">${guess}</span></div>`;
                     
                     if (guess.length !== 5) {
-                        // NEW: Added the hint on how to exit
                         termOutput.innerHTML += `<div class="text-red-500 ml-2">Invalid length. Enter exactly 5 characters (or type 'exit' to abort).</div>`;
                         termOutput.scrollTop = termOutput.scrollHeight;
                         return;
@@ -122,22 +116,22 @@
                     
                     let matchCount = 0;
                     for(let i=0; i<5; i++) {
-                        if (guess[i] === targetPassword[i]) matchCount++;
+                        if (guess[i] === window.crackTarget[i]) matchCount++;
                     }
 
-                    if (guess === targetPassword) {
+                    if (guess === window.crackTarget) {
                         termOutput.innerHTML += `<div class="text-green-500 ml-2 font-bold">[!] EXACT MATCH! SYSTEM UNLOCKED.<br>Flag: FLAG{BRUT3_F0RC3_W1NS}</div>`;
-                        isCracking = false;
+                        window.isCracking = false;
                     } else {
-                        attemptsLeft--;
-                        termOutput.innerHTML += `<div class="text-yellow-500 ml-2">Entry denied ( ${matchCount}/5 correct ). Attempts remaining: ${attemptsLeft}</div>`;
-                        if (attemptsLeft <= 0) {
+                        window.crackAttemptsLeft--;
+                        termOutput.innerHTML += `<div class="text-yellow-500 ml-2">Entry denied ( ${matchCount}/5 correct ). Attempts remaining: ${window.crackAttemptsLeft}</div>`;
+                        if (window.crackAttemptsLeft <= 0) {
                             termOutput.innerHTML += `<div class="text-red-500 ml-2 font-bold">[!] LOCKOUT INITIATED. SECURITY ALERT TRIGGERED.</div>`;
-                            isCracking = false;
+                            window.isCracking = false;
                         }
                     }
                     termOutput.scrollTop = termOutput.scrollHeight;
-                    return; // Stop normal execution so it doesn't say "command not found"
+                    return;
                 }
                 // --- END PASSWORD CRACKER INTERCEPT ---
 
@@ -221,24 +215,24 @@
                         break;
 
                     case 'crack':
-                        if (typeof passwords !== 'undefined') {
-                            isCracking = true;
-                            attemptsLeft = 4;
-                            targetPassword = passwords[Math.floor(Math.random() * passwords.length)];
+                        if (window.crackPasswords) {
+                            window.isCracking = true;
+                            window.crackAttemptsLeft = 4;
+                            window.crackTarget = window.crackPasswords[Math.floor(Math.random() * window.crackPasswords.length)];
                             response = `
                                 <div class="text-cyan-300">
                                     ROBCO INDUSTRIES UNIFIED OPERATING SYSTEM<br>
-                                    COPYRIGHT 2077-2081 ${site.title} INDUSTRIES<br>
+                                    COPYRIGHT 2077-2081 ROBCO INDUSTRIES<br>
                                     -Server 1-<br><br>
-                                    0x1F3C: ${passwords[0]}<br>
-                                    0x1F4A: ${passwords[1]}<br>
-                                    0x1F5B: ${passwords[2]}<br>
-                                    0x1F6C: ${passwords[3]}<br>
-                                    0x1F7D: ${passwords[4]}<br><br>
-                                    Access Granted: Password: AWSEdrfTFytFSUAGV!<br><br>
+                                    0x1F3C: ${window.crackPasswords[0]}<br>
+                                    0x1F4A: ${window.crackPasswords[1]}<br>
+                                    0x1F5B: ${window.crackPasswords[2]}<br>
+                                    0x1F6C: ${window.crackPasswords[3]}<br>
+                                    0x1F7D: ${window.crackPasswords[4]}<br><br>
+                                    Enter Password (5 chars):
                                 </div>`;
                         } else {
-                            response = `<span class="text-red-500">Error: Cracking module not loaded.</span>`;
+                            response = `<span class="text-red-500">Error: Cracking module not loaded. Check easter-egg.html.</span>`;
                         }
                         break;
 
