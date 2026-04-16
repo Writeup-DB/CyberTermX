@@ -47,9 +47,9 @@
                 </span>
                 {% endfor %}
                 
-                {% if site.social.bugcrowd %}
+                {% if site.social.bugcrowd_url %}
                 <span class="border border-green-900 p-1 hover:bg-green-900/50 transition">
-                    <a href="https://{{ site.bugcrowd | remove: 'https://' | remove: 'http://' }}" target="_blank" class="hover:text-green-400 block w-full h-full">View Bugcrowd Profile</a>
+                    <a href="{{ site.social.bugcrowd_url }}" target="_blank" class="hover:text-green-400 block w-full h-full">View Bugcrowd Profile</a>
                 </span>
                 {% endif %}
             </div>

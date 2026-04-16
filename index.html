@@ -2,8 +2,17 @@
 layout: default
 ---
 
-# Welcome to the Cyber TermX Theme for Jekyll
-#This is a custom Jekyll theme designed to give your personal website a unique, cyberpunk by Touhid M Shaikh(@touhidshaikh)
+{% comment %}
+    # Welcome to the Cyber TermX Theme for Jekyll
+    #This is a custom Jekyll theme designed to give your personal website a unique, cyberpunk by Touhid M Shaikh(@touhidshaikh22)
+
+    # CVEs & EXPLOITs fetching from data/cves.yml 
+    # Publications & Arsenal fetching from data/publications.yml
+    # Testimonials & Social Proof fetching from data/testimonials.yml and site.social.linkedin
+    # Latest blog posts fetching (current support wordpress )
+
+{% endcomment %}
+
 <section class="terminal-window p-6 mb-6">
     <h2 class="text-2xl font-bold mb-4 flex items-center gap-2">
         <span class="text-cyan-500 font-mono">[00]</span> INTERACTIVE_SHELL
@@ -17,7 +26,7 @@ layout: default
     </div>
 </section>
 
-# CVEs & EXPLOITs fetching from data/cves.yml 
+
 <section class="terminal-window p-6 mb-6">
     <h2 class="text-2xl font-bold mb-4 flex items-center gap-2">
         <span class="text-red-600 font-mono">[01]</span> CVEs_AND_EXPLOITs
@@ -32,7 +41,6 @@ layout: default
     </div>
 </section>
 
-# CVEs & EXPLOITs fetching from data/publications.yml 
 <section class="terminal-window p-6 mb-6">
     <h2 class="text-2xl font-bold mb-4 flex items-center gap-2">
         <span class="text-yellow-500 font-mono">[02]</span> PUBLICATIONS_&_ARSENAL
@@ -47,7 +55,7 @@ layout: default
     </div>
 </section>
 
-# Testimonials & Social Proof fetching from data/testimonials.yml and site.social.linkedin
+
 <section class="terminal-window p-6 mb-6">
     <h2 class="text-2xl font-bold mb-4 flex items-center gap-2 text-blue-400">
         <span class="font-mono text-blue-500">[03]</span> 
@@ -64,7 +72,7 @@ layout: default
 </section>
 
 
-# Latest blog posts fetching (current support wordpress )
+
 <section class="terminal-window p-6 mb-6">
     <h2 class="text-2xl font-bold mb-4 flex items-center gap-2 text-purple-400">
         <span class="text-purple-500 font-mono">[04]</span> LATEST_INTEL ({{ site.url | remove: "https://" | remove: "http://" }})
@@ -82,7 +90,7 @@ layout: default
         {% for project in site.data.projects %}
         <div class="border border-green-900 p-3 hover:border-green-400 transition cursor-pointer">
             <h5 class="text-green-100 text-sm font-bold"><a href="{{ project.url }}" target="_blank" class="hover:text-green-400">{{ project.name }}</a></h5>
-            <p class="text-[10px] opacity-60 mt-1">{{ project.desc }}</p>
+            <p class="text-green-100 opacity-60 text-sm ">{{ project.desc }}</p>
         </div>
         {% endfor %}
     </div>
