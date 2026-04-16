@@ -1,8 +1,10 @@
+# Site Configuration
 title: TOUHID SHAIKH | SECURITY RESEARCHER
 email: touhidshaikh22@gmail.com
-description: A cybersecurity professional with 6+ years of experience. Expert in identifying critical vulnerabilities (RCE, Auth Bypass) in hardware and enterprise software. Active contributor to <span>Metasploit</span> and <span>Exploit-DB</span>, with 10+ published exploits. Primary author of the official CIS pfSense Benchmark. Creator of <span>ShellPop</span> and <span>403Override-NG</span>.
+description: A cybersecurity professional with 6+ years of experience. Expert in identifying critical vulnerabilities (RCE, Auth Bypass) in hardware and enterprise software. Active contributor to <span class="highlight">Metasploit</span> and <span class="highlight">Exploit-DB</span>, with 10+ published exploits. Primary author of the official CIS pfSense Benchmark. Creator of <span class="highlight">403Override-NG</span>.
 url: "https://touhidshaikh.com"
 baseurl: ""
+rss2json_api_key: "1whfh8wh55x5cennpqvqbxyxraacat1ifc0bzonq"
 
 # Personal Details
 author:
@@ -15,7 +17,7 @@ author:
     [INSERT_YOUR_PGP_KEY_HERE]
     -----END PGP PUBLIC KEY BLOCK-----
 
-# Specializations
+# Specializations skills
 skills: ["VAPT", "Network_Security", "WEB_EXPLOIT", "PYTHON_AUTOMATION"]
 
 # Social Links
@@ -28,13 +30,16 @@ social:
 # Certifications
 certifications: 
   - name: "OSCP"
-    url: "https://www.credential.net/your-oscp-link"
+    url: "https://www.credential.net/ccb32fa5-8b6b-4ca9-8721-e33cca843472#acc.xTLpGCw7"
+
   - name: "OSCE"
-    url: "https://www.credential.net/your-osce-link"
-  - name: "CRT"
-    url: "https://www.crest-approved.org/your-crt-link"
+    url: "https://www.credential.net/f796318c-32c6-464b-abeb-e37540ca9ccb"
+
+  - name: "CREST CRT"
+    url: "#"
+
   - name: "CPSA"
-    url: "https://www.crest-approved.org/your-cpsa-link"
+    url: "#"
 
 # Hall of Fame
 hall_of_fame: 

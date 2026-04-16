@@ -38,7 +38,7 @@
     async function fetchBlog() {
         try {
             // Assumes site.url is set in _config.yml (e.g., https://touhidshaikh.com)
-            const response = await fetch('https://api.rss2json.com/v1/api.json?rss_url={{ site.url }}/feed/');
+            const response = await fetch('https://api.rss2json.com/v1/api.json?rss_url={{ site.url }}/feed/&api_key={{ site.rss2json_api_key }}');
             const data = await response.json();
             const container = document.getElementById('blog-feed');
             
@@ -73,7 +73,7 @@
     const cmdHistory = [];
     
     // Fetch dynamic data from Jekyll (JSON Bridge)
-    fetch('{{ site.baseurl }}/terminal.json')
+    fetch('{{ "/terminal.json" | relative_url }}')
         .then(response => response.json())
         .then(data => { termData = data; })
         .catch(err => console.error("Terminal JSON load failed. Ensure terminal.json exists.", err));
