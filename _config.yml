@@ -1,15 +1,15 @@
 # Site Configuration
-title: TOUHID SHAIKH | SECURITY RESEARCHER
-email: touhidshaikh22@gmail.com
-description: A cybersecurity professional with 6+ years of experience. Expert in identifying critical vulnerabilities (RCE, Auth Bypass) in hardware and enterprise software. Active contributor to <span class="highlight">Metasploit</span> and <span class="highlight">Exploit-DB</span>, with 10+ published exploits. Primary author of the official CIS pfSense Benchmark. Creator of <span class="highlight">403Override-NG</span>.
-url: "https://touhidshaikh.com"
+title: NAME DEMO | SECURITY RESEARCHER
+email: touhidshaikh@example.com
+description: A cybersecurity professional with 6+ years of experience. Active contributor to <span class="highlight">Metasploit</span> and <span class="highlight">Exploit-DB</span>, with 10+ published exploits.
+url: "https://example.com"
 baseurl: ""
-rss2json_api_key: "1whfh8wh55x5cennpqvqbxyxraacat1ifc0bzonq"
-drive_link_resume: "https://drive.google.com/file/d/1rHgy67Tbss9N21ltn_MpoPOwmxMb1UyC/view?usp=sharing"
+rss2json_api_key: ""
+drive_link_resume: "https://drive.google.com/file/d/example/view?usp=sharing"
 
 # Personal Details
 author:
-  name: Touhid M Shaikh
+  name: NAME DEMO
   role: Security_Researcher // Exploit_Developer // Open_Source_Contributor
   location: Mumbai, IN
   ip_address: "127.0.0.1"
